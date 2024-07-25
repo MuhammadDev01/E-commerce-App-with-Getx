@@ -1,4 +1,3 @@
-import 'package:ecommerce_with_mvc/models/category_names_model.dart';
 import 'package:ecommerce_with_mvc/models/products_model.dart';
 import 'package:ecommerce_with_mvc/services/all_products_service.dart';
 import 'package:ecommerce_with_mvc/services/get_categories_service.dart';
@@ -11,22 +10,27 @@ class ProductsController extends GetxController {
   List<ProductsModel> favoriteList = <ProductsModel>[].obs;
   GetStorage storage = GetStorage();
 
-//category
-  CategoryNamesModel? categoriesNames;
   //search
   TextEditingController searchController = TextEditingController();
   var searchText = ''.obs; // استخدام RxString لتتبع النص
   var searchList = <ProductsModel>[].obs;
 
+// category
+  List<dynamic> categoriesNames = [];
   @override
   void onInit() async {
     super.onInit();
+    // get products in home page
     productList.value = await AllProudctService().getallproduct();
+
+    // get favorite products in favorites page
     List? favoriteListStorage = storage.read<List>("isFavoritesList");
     if (favoriteListStorage != null) {
       favoriteList =
           favoriteListStorage.map((e) => ProductsModel.fromJson(e)).toList();
     }
+
+    //get categories in category page
     categoriesNames = await CategoriesService().getCategoriesNames();
 
     update();

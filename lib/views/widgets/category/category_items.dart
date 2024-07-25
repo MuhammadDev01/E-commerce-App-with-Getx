@@ -1,5 +1,4 @@
 import 'package:ecommerce_with_mvc/logic/controller/products_controller.dart';
-import 'package:ecommerce_with_mvc/models/category_names_model.dart';
 import 'package:ecommerce_with_mvc/views/widgets/category/category_products_widget.dart';
 import 'package:ecommerce_with_mvc/views/widgets/text_utils.dart';
 import 'package:flutter/material.dart';
@@ -12,18 +11,20 @@ class CategoryItems extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.separated(
-          itemBuilder: (context, index) => Container(),
-          separatorBuilder: (context, index) => const SizedBox(
-                height: 10,
-              ),
-          itemCount: 4),
+        itemBuilder: (context, index) => CategoryItemBuilder(
+            categoryName: controller.categoriesNames[index]),
+        separatorBuilder: (context, index) => const SizedBox(
+          height: 10,
+        ),
+        itemCount: controller.categoriesNames.length,
+      ),
     );
   }
 }
 
 class CategoryItemBuilder extends StatelessWidget {
-  const CategoryItemBuilder({super.key, required this.name});
-  final CategoryNamesModel name;
+  const CategoryItemBuilder({super.key, required this.categoryName});
+  final String categoryName;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -44,9 +45,9 @@ class CategoryItemBuilder extends StatelessWidget {
             color: Colors.black.withOpacity(0.5),
             borderRadius: BorderRadius.circular(15),
           ),
-          child: const Center(
+          child: Center(
             child: TextUtils(
-              text: 'catego',
+              text: categoryName,
               fontSize: 20,
             ),
           ),
