@@ -1,4 +1,5 @@
 import 'package:ecommerce_with_mvc/views/widgets/settings/dark_mode_widget.dart';
+import 'package:ecommerce_with_mvc/views/widgets/settings/logout_button.dart';
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -16,6 +17,7 @@ class SettingsPage extends StatelessWidget {
         SizedBox(
           height: 50,
         ),
+        LogOutButton(),
       ],
     );
   }
