@@ -1,5 +1,5 @@
 import 'package:ecommerce_with_mvc/logic/controller/products_controller.dart';
-import 'package:ecommerce_with_mvc/views/widgets/category/category_products_widget.dart';
+import 'package:ecommerce_with_mvc/views/widgets/category/category_products_list.dart';
 import 'package:ecommerce_with_mvc/views/widgets/text_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -7,12 +7,20 @@ import 'package:get/get.dart';
 class CategoryItems extends StatelessWidget {
   CategoryItems({super.key});
   final controller = Get.find<ProductsController>();
+  final categoriesImages = const [
+    "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
+    "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg",
+    "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+    "https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg",
+  ];
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.separated(
         itemBuilder: (context, index) => CategoryItemBuilder(
-            categoryName: controller.categoriesNames[index]),
+          categoryName: controller.categoriesNames[index],
+          categoryImage: categoriesImages[index],
+        ),
         separatorBuilder: (context, index) => const SizedBox(
           height: 10,
         ),
@@ -23,22 +31,26 @@ class CategoryItems extends StatelessWidget {
 }
 
 class CategoryItemBuilder extends StatelessWidget {
-  const CategoryItemBuilder({super.key, required this.categoryName});
+  const CategoryItemBuilder(
+      {super.key, required this.categoryName, required this.categoryImage});
   final String categoryName;
+  final String categoryImage;
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.to(() => CategoryProductsWidget());
+        Get.to(() => CategoryProductsList(
+              categoryName: categoryName,
+            ));
       },
       child: Container(
         height: 120,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
-          image: const DecorationImage(
-              fit: BoxFit.cover,
-              image: NetworkImage(
-                  'https://plus.unsplash.com/premium_photo-1721198516755-6a571b396236?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')),
+          image: DecorationImage(
+            fit: BoxFit.fill,
+            image: NetworkImage(categoryImage),
+          ),
         ),
         child: Container(
           decoration: BoxDecoration(

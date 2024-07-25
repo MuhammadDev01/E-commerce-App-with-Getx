@@ -7,4 +7,10 @@ class CategoriesService {
 
     return data;
   }
+
+  Future<List<dynamic>> getCategory({required categoryName}) async {
+    var data = await ApiHelper()
+        .get(url: '${ApiHelper.baseUrl}/products/category/$categoryName');
+    return data;
+  }
 }

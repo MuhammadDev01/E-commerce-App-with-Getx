@@ -1,6 +1,6 @@
 import 'package:ecommerce_with_mvc/models/products_model.dart';
 import 'package:ecommerce_with_mvc/services/all_products_service.dart';
-import 'package:ecommerce_with_mvc/services/get_categories_service.dart';
+import 'package:ecommerce_with_mvc/services/categories_services.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -14,9 +14,8 @@ class ProductsController extends GetxController {
   TextEditingController searchController = TextEditingController();
   var searchText = ''.obs; // استخدام RxString لتتبع النص
   var searchList = <ProductsModel>[].obs;
-
-// category
   List<dynamic> categoriesNames = [];
+  var categoriesList = <ProductsModel>[].obs;
   @override
   void onInit() async {
     super.onInit();
@@ -76,5 +75,18 @@ class ProductsController extends GetxController {
 
   bool addToFavorite(int productId) {
     return favoriteList.any((element) => element.id == productId);
+  }
+
+  //category page
+  void getCategoryList({required String categoryName}) async {
+    categoriesList.clear();
+
+    await CategoriesService()
+        .getCategory(categoryName: categoryName)
+        .then((products) {
+      for (var product in products) {
+        categoriesList.add(ProductsModel.fromJson(product));
+      }
+    });
   }
 }
