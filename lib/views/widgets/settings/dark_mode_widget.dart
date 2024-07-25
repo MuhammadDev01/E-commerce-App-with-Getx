@@ -1,4 +1,6 @@
 import 'package:ecommerce_with_mvc/logic/controller/main_controller.dart';
+import 'package:ecommerce_with_mvc/logic/controller/theme_controller.dart';
+import 'package:ecommerce_with_mvc/utils/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -32,14 +34,14 @@ class DarkModeWidget extends StatelessWidget {
             ),
             const Spacer(),
             Switch(
-              activeColor: Colors.blue[700],
-              activeTrackColor: Colors.grey,
-              value: true, //CachedHelper.getData(key: 'isDark'),
+              activeColor: pinkClr,
+              activeTrackColor: Colors.white,
+              inactiveTrackColor: Colors.white,
+              inactiveThumbColor: mainColor,
+              value: controller.switchValue,
               onChanged: (value) {
-                // controller.changeThemeMode(CachedHelper.getData(key: 'isDark'));
-                // CachedHelper.getData(key: 'isDark')
-                //     ? Get.changeThemeMode(ThemeMode.dark)
-                //     : Get.changeThemeMode(ThemeMode.light);
+                ThemeController().changeThemeMode();
+                controller.switchValue = value;
               },
             ),
           ],

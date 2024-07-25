@@ -1,4 +1,4 @@
-import 'package:ecommerce_with_mvc/logic/controller/theme_controller.dart';
+import 'package:ecommerce_with_mvc/views/widgets/settings/dark_mode_widget.dart';
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -6,15 +6,17 @@ class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Center(
-        child: TextButton(
-          onPressed: () {
-            ThemeController().changeThemeMode();
-          },
-          child: Text('Settings Page',
-              style: Theme.of(context).textTheme.bodySmall),
+    return ListView(
+      padding: const EdgeInsets.all(20),
+      children: const [
+        SizedBox(
+          height: 50,
         ),
-      );
-    
+        DarkModeWidget(),
+        SizedBox(
+          height: 50,
+        ),
+      ],
+    );
   }
 }
