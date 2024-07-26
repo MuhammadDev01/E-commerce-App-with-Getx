@@ -22,7 +22,5 @@ class MainController extends GetxController {
     "Settings",
   ].obs;
 
-  String capitalize({required String name}){
-    return name.split("").map((e) => e.capitalize).join(" ");
-  }
+ 
 }

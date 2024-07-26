@@ -1,4 +1,4 @@
-import 'package:ecommerce_with_mvc/logic/controller/main_controller.dart';
+import 'package:ecommerce_with_mvc/logic/controller/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -7,7 +7,7 @@ class ProfileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<MainController>(
+    return GetBuilder<AuthController>(
       builder: (controller) => Row(
         children: [
           CircleAvatar(
@@ -27,16 +27,16 @@ class ProfileWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                controller.capitalize(name: 'username'),
+                controller.auth.currentUser!.displayName!.capitalize!,
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       fontSize: 18,
                     ),
               ),
               const SizedBox(
-                height: 10,
+                height: 5,
               ),
               Text(
-                'email@gmail.com',
+                controller.auth.currentUser!.email!,
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       fontSize: 16,
                     ),
