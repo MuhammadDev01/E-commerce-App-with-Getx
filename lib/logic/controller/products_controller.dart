@@ -89,4 +89,9 @@ class ProductsController extends GetxController {
       }
     });
   }
+
+
+  String capitalize({required String name}){
+    return name.split("").map((e) => e.capitalize).join(" ");
+  }
 }

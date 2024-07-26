@@ -21,4 +21,8 @@ class MainController extends GetxController {
     "Favorites",
     "Settings",
   ].obs;
+
+  String capitalize({required String name}){
+    return name.split("").map((e) => e.capitalize).join(" ");
+  }
 }

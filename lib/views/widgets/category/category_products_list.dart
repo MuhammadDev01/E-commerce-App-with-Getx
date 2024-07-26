@@ -34,7 +34,7 @@ class _CategoryProductsListState extends State<CategoryProductsList> {
             backgroundColor: mainColor,
             title: TextUtils(
               fontSize: 20,
-              text: widget.categoryName,
+              text: controller.capitalize(name: widget.categoryName),
               color: Get.isDarkMode ? Colors.white : Colors.black,
             ),
           ),

@@ -27,7 +27,7 @@ class ProfileWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'username',
+                controller.capitalize(name: 'username'),
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       fontSize: 18,
                     ),
