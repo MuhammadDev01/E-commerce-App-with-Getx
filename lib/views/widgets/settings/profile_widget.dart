@@ -1,61 +1,48 @@
+import 'package:ecommerce_with_mvc/logic/controller/main_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lab_nerd/logic/controllers/app_controller.dart';
-import 'package:lab_nerd/views/auth/forgot_password_view.dart';
 
 class ProfileWidget extends StatelessWidget {
   const ProfileWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<Appcontroller>(
-      builder: (controller) => Column(
+    return GetBuilder<MainController>(
+      builder: (controller) => Row(
         children: [
-          controller.profileUser == null
-              ? const LoadingWidget()
-              : Row(
-                  children: [
-                    CircleAvatar(
-                      backgroundColor: Colors.white,
-                      radius: 35,
-                      child: ClipOval(
-                        child: Image.asset(
-                          'assets/images/user image profile.png',
-                          fit: BoxFit.cover,
-                        ),
-                      ),
+          CircleAvatar(
+            backgroundColor: Colors.white,
+            radius: 35,
+            child: ClipOval(
+              child: Image.network(
+                'https://img-cdn.pixlr.com/image-generator/history/65bb506dcb310754719cf81f/ede935de-1138-4f66-8ed7-44bd16efc709/medium.webp',
+                fit: BoxFit.contain,
+              ),
+            ),
+          ),
+          const SizedBox(
+            width: 15,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'username',
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      fontSize: 18,
                     ),
-                    const SizedBox(
-                      width: 15,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Text(
+                'email@gmail.com',
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      fontSize: 16,
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          controller.profileUser?.name ?? 'username',
-                          style: Theme.of(context)
-                              .textTheme
-                              .displaySmall
-                              ?.copyWith(
-                                fontSize: 18,
-                              ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          controller.profileUser?.email ?? 'email@gmail.com',
-                          style: Theme.of(context)
-                              .textTheme
-                              .displaySmall
-                              ?.copyWith(
-                                fontSize: 16,
-                              ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+              ),
+            ],
+          ),
         ],
       ),
     );

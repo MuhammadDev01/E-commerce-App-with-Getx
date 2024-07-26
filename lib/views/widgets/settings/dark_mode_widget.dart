@@ -30,7 +30,9 @@ class DarkModeWidget extends StatelessWidget {
             ),
             Text(
               "DarkMode",
-              style: Theme.of(context).textTheme.bodySmall,
+              style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                fontSize: 20,
+              ),
             ),
             const Spacer(),
             Switch(

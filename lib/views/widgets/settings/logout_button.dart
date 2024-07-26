@@ -14,12 +14,11 @@ class LogOutButton extends StatelessWidget {
           Get.defaultDialog(
             title: "Logout From App?",
             titleStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
-              fontSize: 22,
-            ),
+                  fontSize: 22,
+                ),
             middleText: 'Are you sure you need to logout',
-            middleTextStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
-              fontSize: 18
-            ),
+            middleTextStyle:
+                Theme.of(context).textTheme.bodySmall!.copyWith(fontSize: 18),
             radius: 10,
             textCancel: " No ",
             cancelTextColor: Get.isDarkMode ? Colors.white : Colors.black,
@@ -31,8 +30,7 @@ class LogOutButton extends StatelessWidget {
             onConfirm: () {
               controller.signOutFromApp();
             },
-            buttonColor:
-                Get.isDarkMode ? pinkClr:mainColor,
+            buttonColor: Get.isDarkMode ? pinkClr : mainColor,
           );
         },
         borderRadius: BorderRadius.circular(6),
@@ -54,7 +52,9 @@ class LogOutButton extends StatelessWidget {
             ),
             Text(
               "Logout",
-              style: Theme.of(context).textTheme.bodySmall,
+              style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                    fontSize: 20,
+                  ),
             ),
           ],
         ),
