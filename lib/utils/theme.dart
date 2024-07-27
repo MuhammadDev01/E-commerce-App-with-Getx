@@ -14,6 +14,10 @@ const Color logOutSettings = Color(0xff5f95ef);
 const Color notiSettings = Color(0xffdf5862);
 const Color languageSettings = Color(0xffCB256C);
 
+const arLang = 'Arabic 🇸🇦';
+const enLang = 'English 🇬🇧';
+const frLang = 'Frensh 🇫🇷';
+
 //fonts
 const fontQuicksand = "Quicksand";
 

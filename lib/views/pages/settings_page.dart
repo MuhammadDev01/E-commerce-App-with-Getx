@@ -1,5 +1,6 @@
 import 'package:ecommerce_with_mvc/utils/theme.dart';
 import 'package:ecommerce_with_mvc/views/widgets/settings/dark_mode_widget.dart';
+import 'package:ecommerce_with_mvc/views/widgets/settings/language_widget.dart';
 import 'package:ecommerce_with_mvc/views/widgets/settings/logout_button.dart';
 import 'package:ecommerce_with_mvc/views/widgets/settings/profile_widget.dart';
 import 'package:ecommerce_with_mvc/views/widgets/text_utils.dart';
@@ -34,6 +35,10 @@ class SettingsPage extends StatelessWidget {
         ),
         const DarkModeWidget(),
         const SizedBox(
+          height: 15,
+        ),
+        const LanguageWidget(),
+          const SizedBox(
           height: 15,
         ),
         const LogOutButton(),
