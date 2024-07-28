@@ -25,8 +25,8 @@ class SettingsPage extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-        const TextUtils(
-          text: 'GENERAL',
+         TextUtils(
+          text: 'GENERAL'.tr,
           fontSize: 14,
           color: mainColor,
         ),

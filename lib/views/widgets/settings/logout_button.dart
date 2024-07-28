@@ -51,7 +51,7 @@ class LogOutButton extends StatelessWidget {
               width: 20,
             ),
             Text(
-              "Logout",
+              "Logout".tr,
               style: Theme.of(context).textTheme.bodySmall!.copyWith(
                     fontSize: 20,
                   ),

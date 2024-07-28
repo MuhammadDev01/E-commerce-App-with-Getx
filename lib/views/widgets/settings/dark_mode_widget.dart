@@ -29,7 +29,7 @@ class DarkModeWidget extends StatelessWidget {
               width: 20,
             ),
             Text(
-              "DarkMode",
+              "DarkMode".tr,
               style: Theme.of(context).textTheme.bodySmall!.copyWith(
                 fontSize: 20,
               ),

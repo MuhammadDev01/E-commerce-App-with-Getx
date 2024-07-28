@@ -22,5 +22,8 @@ class MainController extends GetxController {
     "Settings",
   ].obs;
 
- 
+  void changeLangauge(String type) {
+    Get.updateLocale(Locale(type));
+    update();
+  }
 }

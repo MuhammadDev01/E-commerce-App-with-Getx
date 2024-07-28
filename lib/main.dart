@@ -1,4 +1,5 @@
 import 'package:ecommerce_with_mvc/firebase_options.dart';
+import 'package:ecommerce_with_mvc/languages/6.5%20localiztion.dart';
 import 'package:ecommerce_with_mvc/logic/controller/theme_controller.dart';
 import 'package:ecommerce_with_mvc/routes/routes.dart';
 import 'package:ecommerce_with_mvc/utils/theme.dart';
@@ -25,6 +26,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      locale: const Locale('en'),
+      fallbackLocale: const Locale('en'),
+      translations: LocaliztionApp(),
       initialRoute: FirebaseAuth.instance.currentUser != null ||
               GetStorage().read('auth') == true
           ? AppRoutes.main
