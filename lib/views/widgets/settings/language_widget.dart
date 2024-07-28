@@ -54,13 +54,13 @@ class _LanguageWidgetState extends State<LanguageWidget> {
                 border: Border.all(),
               ),
               child: DropdownButton<String>(
-                items:  [
+                items: [
                   DropdownMenuItem(
                     value: 'ar',
                     child: TextUtils(
                       text: arLang,
                       fontSize: 16,
-                      color: Get.isDarkMode?Colors.white:Colors.black,
+                      color: Get.isDarkMode ? Colors.white : Colors.black,
                     ),
                   ),
                   DropdownMenuItem(
@@ -68,7 +68,7 @@ class _LanguageWidgetState extends State<LanguageWidget> {
                     child: TextUtils(
                       text: enLang,
                       fontSize: 16,
-                      color: Get.isDarkMode?Colors.white:Colors.black,
+                      color: Get.isDarkMode ? Colors.white : Colors.black,
                     ),
                   ),
                   DropdownMenuItem(
@@ -76,7 +76,7 @@ class _LanguageWidgetState extends State<LanguageWidget> {
                     child: TextUtils(
                       text: frLang,
                       fontSize: 16,
-                      color: Get.isDarkMode?Colors.white:Colors.black,
+                      color: Get.isDarkMode ? Colors.white : Colors.black,
                     ),
                   ),
                 ],
@@ -86,7 +86,7 @@ class _LanguageWidgetState extends State<LanguageWidget> {
                   });
                   controller.changeLangauge(value!);
                 },
-                value: currnetVal,
+                value: controller.getLanguage,
               ),
             ),
           ),

@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      locale: const Locale('en'),
+      locale: Locale(GetStorage().read('lang') ?? 'en'),
       fallbackLocale: const Locale('en'),
       translations: LocaliztionApp(),
       initialRoute: FirebaseAuth.instance.currentUser != null ||
