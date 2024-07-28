@@ -1,5 +1,6 @@
 import 'package:ecommerce_with_mvc/logic/controller/cart_controller.dart';
 import 'package:ecommerce_with_mvc/utils/theme.dart';
+import 'package:ecommerce_with_mvc/views/pages/payments/payment_page.dart';
 import 'package:ecommerce_with_mvc/views/widgets/cart/cart_item_builder.dart';
 import 'package:ecommerce_with_mvc/views/widgets/cart/empty_cart_widget.dart';
 import 'package:ecommerce_with_mvc/views/widgets/text_utils.dart';
@@ -74,7 +75,9 @@ class _CartItemsPageState extends State<CartItemsPage> {
                     TotalCartProductsWidget(
                       textButton: "Check Out",
                       total: cartController.total,
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(() => const PaymentPage());
+                      },
                     ),
                   ],
                 )
