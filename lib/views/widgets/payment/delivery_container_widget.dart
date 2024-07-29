@@ -22,10 +22,10 @@ class _DeliveryContainerWidgetState extends State<DeliveryContainerWidget> {
       children: [
         DeliveryContainerBuilder(
           color: changeColor ? Colors.grey[300] : Colors.white,
-          address: 'address',
-          name: 'name',
-          phone: 'phone',
-          title: 'title',
+          address: 'ward street-London-England',
+          name: 'muhammad',
+          phone: '222-5647-5256-5541',
+          title: 'Cash',
           value: 0,
           groupValue: groupValue,
           onChanged: (value) {
@@ -38,10 +38,10 @@ class _DeliveryContainerWidgetState extends State<DeliveryContainerWidget> {
         const SizedBox(height: 10),
         DeliveryContainerBuilder(
           color: changeColor ? Colors.white : Colors.grey[300],
-          address: 'address',
-          name: 'name',
-          phone: 'phone',
-          title: 'title',
+         address: 'cairo street-Giza-Egypt',
+          name: 'khaled',
+          phone: '01029036889',
+          title: 'Delivery',
           value: 1,
           groupValue: groupValue,
           onChanged: (value) {
@@ -113,27 +113,31 @@ class DeliveryContainerBuilder extends StatelessWidget {
                     title,
                     style: Theme.of(context).textTheme.bodySmall!.copyWith(
                           fontSize: 20,
+                          color: Colors.black,
                         ),
                   ),
                   Text(
                     name,
                     style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.normal,
+                          color: Colors.black,
                         ),
                   ),
                   Text(
                     phone,
                     style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.normal,
+                          color: Colors.black,
                         ),
                   ),
                   Text(
                     address,
                     style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.normal,
+                          color: Colors.black,
                         ),
                   ),
                 ],
