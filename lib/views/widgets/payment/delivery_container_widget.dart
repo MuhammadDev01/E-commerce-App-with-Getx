@@ -18,6 +18,7 @@ class _DeliveryContainerWidgetState extends State<DeliveryContainerWidget> {
   bool changeColor = true;
   TextEditingController phoneController1 = TextEditingController();
   TextEditingController phoneController2 = TextEditingController();
+  var controller = Get.find<MainController>();
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +32,12 @@ class _DeliveryContainerWidgetState extends State<DeliveryContainerWidget> {
           title: 'Cash',
           value: 0,
           groupValue: groupValue,
+          controller: controller,
           onChanged: (value) {
             setState(() {
               groupValue = value!;
               changeColor = !changeColor;
+              controller.updatePosition();
             });
           },
         ),
@@ -46,11 +49,13 @@ class _DeliveryContainerWidgetState extends State<DeliveryContainerWidget> {
           name: 'khaled',
           title: 'Delivery',
           value: 1,
+          controller: controller,
           groupValue: groupValue,
           onChanged: (value) {
             setState(() {
               groupValue = value!;
               changeColor = !changeColor;
+              controller.updatePosition();
             });
           },
         ),
@@ -60,7 +65,7 @@ class _DeliveryContainerWidgetState extends State<DeliveryContainerWidget> {
 }
 
 class DeliveryContainerBuilder extends StatelessWidget {
-  DeliveryContainerBuilder({
+  const DeliveryContainerBuilder({
     super.key,
     required this.color,
     required this.title,
@@ -69,7 +74,7 @@ class DeliveryContainerBuilder extends StatelessWidget {
     required this.value,
     this.onChanged,
     required this.groupValue,
-    required this.phoneController,
+    required this.phoneController, required this.controller,
   });
 
   final String title;
@@ -79,7 +84,7 @@ class DeliveryContainerBuilder extends StatelessWidget {
   final int value;
   final void Function(int?)? onChanged;
   final int groupValue;
-  final controller = Get.find<MainController>();
+  final MainController controller; 
   final TextEditingController phoneController;
   @override
   Widget build(BuildContext context) {
@@ -109,26 +114,26 @@ class DeliveryContainerBuilder extends StatelessWidget {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.only(top: 10.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                          fontSize: 20,
-                          color: Colors.black,
-                        ),
-                  ),
-                  Text(
-                    name,
-                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                          fontSize: 14,
-                          fontWeight: FontWeight.normal,
-                          color: Colors.black,
-                        ),
-                  ),
-                  Obx(
-                    () => Row(
+              child: Obx(
+                () => Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                            fontSize: 20,
+                            color: Colors.black,
+                          ),
+                    ),
+                    Text(
+                      name,
+                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                            fontSize: 14,
+                            fontWeight: FontWeight.normal,
+                            color: Colors.black,
+                          ),
+                    ),
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
@@ -152,16 +157,16 @@ class DeliveryContainerBuilder extends StatelessWidget {
                         ),
                       ],
                     ),
-                  ),
-                  Text(
-                    address,
-                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                          fontSize: 14,
-                          fontWeight: FontWeight.normal,
-                          color: Colors.black,
-                        ),
-                  ),
-                ],
+                    Text(
+                      controller.address.value,
+                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                            fontSize: 14,
+                            fontWeight: FontWeight.normal,
+                            color: Colors.black,
+                          ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
