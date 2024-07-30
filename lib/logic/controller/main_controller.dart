@@ -39,4 +39,7 @@ class MainController extends GetxController {
     saveLanguage(type);
     update();
   }
+
+//payment
+  RxString phone = 'xxxxxxxxxxx'.obs;
 }
